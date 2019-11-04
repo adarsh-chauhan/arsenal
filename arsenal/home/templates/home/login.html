@@ -1,0 +1,34 @@
+{% extends 'home/frame.html' %}
+{% block content %}
+
+<div id="login" class="jumbotron" style="opacity: .7;background-color: black; color: white;margin: 5% auto; width:30%">       
+      {{ login_message | safe }}
+	<form method="post" action="login" autocomplete="off">
+        	{% csrf_token %}    
+
+                <div class="form-group">
+                    <label for="select_arsenal_user" class="display-4">Username</label>
+                    <input class="form-control" id="select_arsenal_user" name="username" list="listofusernames">
+			<datalist id="listofusernames">
+			<option></option>
+			{% for o in arsenal_user_list %}
+				<option>{{ o }}</option>
+			{% endfor %}
+
+                    	</datalist>
+                    <small>if your username does not appear in the list please contact the administrator/leads/manager</small>
+                </div>
+                
+                <div clas="form-group">
+                    <label for="password_arsenal_user" class="display-4">Password</label>
+                    <input id="password_arsenal_user" type="password" class="form-control" name="password"><br>
+                </div>
+                
+                <button type="Submit" class="btn btn-primary float-right">Login </button><br><br>
+                
+                
+                
+            </form>
+        </div>
+		
+{% endblock %}

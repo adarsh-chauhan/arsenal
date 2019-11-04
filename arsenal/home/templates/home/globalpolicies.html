@@ -1,0 +1,15 @@
+{% extends 'home/frame.html' %}
+
+{% block content %}
+<div class="card card-inverse" style="width:50%; background-color: #333; border-color: #333; opacity: .8; left: 25%; top:1%">
+  <div class="card-block">
+    <h4 class="card-title">Global TAC Polices</h4>
+      </div>
+<ul class="list-group list-group-flush">
+{% for i in gp %}
+ <li class="list-group-item justify-content-between" style="background-color:green"><a download target="_blank" href='/static/home/documents/globalpolicies/{{i}}'>{{i}}</a></li>
+{% endfor %}
+</ul>
+</div>
+
+{% endblock %}

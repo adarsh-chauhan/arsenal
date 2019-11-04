@@ -1,0 +1,59 @@
+{% extends 'home/frame.html' %}
+
+{% block content %}
+<div style="overflow-y:auto; position: fixed; width:90%; height:90%" >
+<table style="width:80%; top:5%; margin:auto;position:relative;opacity:.8" class="table table-inverse"> 
+<tr>
+<td width="20%" align="center" colspan=1>
+       <form method="post" action="inventory" autocomplete="off">
+                {% csrf_token %}
+		<div class="form-group row">
+                    <h3 for="select_device">Device </h3>&nbsp;
+                        <select class="custom-select" name="category">
+                        {% for o in query_inven_dict.category %}
+                                <option value="o.0">{{ o.1 }}</option>
+                        {% endfor %}	
+                        </select>
+		</div>
+</td>
+
+<td width="50%" align="center" colspan=3>
+              <div class="form-group row">
+                    <h3 for="select_modelorversion">Model/Version </h3>&nbsp;
+                    <input style="width:60%;" class="form-control" type="search" id="select_modelorversion" name="modorver" list="modelorversion" placeholder="Choose the closest Model or Version from the list" required autofocus>
+                        <datalist id="modelorversion">
+                        <option></option>
+                        {% for o in query_inven_dict.modorver %}
+                                <option>{{ o.1 }}</option>
+                        {% endfor %}
+
+                        </datalist>
+			<small>Currently Database Query logic only considers Model/Version and not Device!</small>
+                 </div>
+</td>
+
+<td width="10%" align="center"> 
+	<button type="Submit" class="btn btn-primary float-right">Search</button><br><br>
+</td>
+	</form>
+</tr>
+
+{% if query_inven_res %}
+<tr>
+<th>Team </th> <th>Model and MAC</th> <th> Last Checked Out Date </th> <th> Checked Out By </th> <th> Click to Checkout </th>
+</tr>
+{% endif %}
+
+{% for o in query_inven_res %}
+<tr>
+<td> {{ o.team }}</td>
+<td> {{ o.modelorversion }} &nbsp; {{ o.identifier }} </td>
+<td> {{ o.checkedoutdate }} </td>
+<td> {{ o.checkedoutby__username }}</td>
+<td> <a href="/goto?page=inven&page_id={{ o.identifier }}"> <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i> </a>></td>
+</tr>
+{% endfor %}
+
+</table>
+</div>
+{% endblock %}

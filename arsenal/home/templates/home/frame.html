@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title> Arsenal </title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        
+        <link rel="stylesheet" href="/static/home/css/css/font-awesome.min.css">        
+       
+	 <style>
+        body,html{ height:100%;}
+            
+        .bg{
+            background-image: url(static/home/images/back.jpeg);
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size:cover;
+            }  
+
+	a{color:white;}
+	
+	
+                    
+	 </style>
+        
+    </head>
+    
+    
+    <body class="bg"> 
+        
+        <nav class="nav bg-inverse" style="font-size: 20px;">
+            <a class="nav-link navbar-brand" style="font-size: 25px"href="/">Arsenal</a>
+            <a class="nav-link "href="knowledgebase.html" title="Trainings and Research Portal">Knowledge Base</a>
+            <a class="nav-link" href="repository.html" title="Useful Links">Repository</a>
+            <a class="nav-link" href="inventory.html" title="IPPhones/CUCM/Routers">Inventory</a>
+ 
+	   <div class="dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Policies</a>
+                <ul class="dropdown-menu">
+                    <a href="/globalpolicies" class="nav-link dropdown-item">Global TAC</a>
+                <!--   <a href="#" class="nav-link dropdown-item">CUCM</a> -->
+                </ul>
+            </div>
+            
+            <div class="dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Web Apps</a>
+                <ul class="dropdown-menu">
+		     <a class="nav-link dropdown-item" href="/trendingidea">Trending Ideas</a>
+                </ul>
+            </div>
+ 		     
+            <a class="nav-link" href="contact.html">Contact</a>
+            <a class="nav-link ml-auto" href="login.html" title="Login Page"><i class="fa fa-user-o"></i> Signed in as {{arsenal_user}}</a>
+	    <a class="nav-link" href="logout.html" title="Click to Logout"><i class="fa fa-sign-out" title="logout"></i></a>
+        </nav>
+        
+	{% block content%}
+	{% endblock %} 
+       
+    </body>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+ 
+	{% block script %}
+    	{% endblock %}
+
+           
+</html>
+

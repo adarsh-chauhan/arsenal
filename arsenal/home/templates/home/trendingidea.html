@@ -1,0 +1,83 @@
+{% extends 'home/frame.html' %}
+{% block content %}
+
+
+<div class="container" id="1" style="width:95%; height:90%; overflow-y:auto">
+<table style="width:95%; top:5%; margin:auto;position:relative;opacity:.8" class="table table-inverse">
+
+<thead>
+<th style="width:7%">Submitted By</th> <th style="width:7%">Name</th> <th style="width:60%">Description</th> <th style="width:8%">Submitted On</th> <th style="width:7%">Support</th> <th style="text-align:center;width:5%">Reviewed</th> <th style="width:5%">Feasible</th> <th style="width:10%">Dev</th>
+</thead>
+
+{% for i in ti %}
+<tr><td>{{i.submittedby__username}}</td> <td>{{i.iname}}</td> <td>{{i.idea}}</td> <td>{{i.submittedon}}</td> 
+<td><a href="/goto?page=ti&page_id={{i.id}}"><span class="fa fa-thumbs-up fa-2x"></span></a> {{i.hits}}</td>
+<td>
+{% if i.readbyadmin == 0 %}
+<i class="fa fa-square-o"></i>
+{% else %}
+<i class="fa fa-check-square-o"></i>
+{% endif %}
+</td> 
+<td>
+{% if i.feasibilitycheck == 1 %}
+Yes
+{% else %}
+{% endif %}
+</td> 
+<td>{{i.assignedto__username}}</td> 
+</tr>
+{% endfor %}
+<button type="button" id="22" class="btn btn-primary pull-right">I have an idea too!</button>
+
+
+</table>
+</div>
+
+
+
+<div class="container" id="2" style="width:70%; height:90%;left:15%">
+<div class="card card-inverse" style="width: 50rem; top:5%; background-color: #333; border-color: #333; opacity: .9">
+  <div class="card-block">
+    
+
+<form method='post' action="/trendingidea">
+{% csrf_token %}
+<div class="form-group">
+    <h3>Name your idea</h3>
+    <input class="form-control" maxlength="15" type="text" name="iname" placeholder="Character Limit 15" required>
+    <small id="emailHelp" class="form-text text-muted">Give a unique name to your idea!</small>
+  </div>
+<div class="form-group">
+    <h3 for="exampleTextarea">Describe your idea</h3>
+    <textarea class="form-control" id="exampleTextarea" name="description" rows="10" placeholder="Character Limit 250" maxlength="250" required></textarea>
+  </div>
+<input class="btn btn-secondary pull-right" type="submit" value="Submit">
+</form>
+</div>
+
+</div>
+</div>
+
+{% endblock %}
+
+
+
+{% block script %}
+<script>
+$(document).ready(function(){	
+	$(".container").hide();
+	$("#1").show();
+
+	$("#11").click(function(){
+	$(".container").hide();
+	$("#1").toggle();
+	})
+
+	$("#22").click(function(){
+	$(".container").hide();
+	$("#2").toggle();
+	})
+});
+</script>
+{% endblock %}

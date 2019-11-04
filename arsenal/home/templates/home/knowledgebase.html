@@ -1,0 +1,40 @@
+{% extends 'home/frame.html' %}
+{% block content %}
+{% if kb %}
+<div class="container" style="top:1%">
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card card-inverse" style="background-color: #333; border-color: #333; opacity: .8">
+      <div class="card-block align-items-center">
+        <h3 class="card-title">Research Portal</h3>
+        <p class="card-text">Search for Technical articles, White papers and Known issues</p>
+       	<ul class="list-group list-group-flush">
+	{% for liob in kb %}
+		{% if liob.category == 'rp' %}
+			<li class="list-group-item justify-content-between" style="background-color:green"><a target="_blank" class='card-link text-uppercase h4' href='{% url 'goto' %}?page_id={{liob.id}}&page=kb'>{{liob.title}} <i class="fa fa-external-link"> </i></a><span> <i class="fa fa-eye">{{ liob.hits }}</i></span></li>
+		{% endif %} 
+	{% endfor %}	
+	</ul>
+      </div>
+    </div>
+  </div>
+  
+<div class="col-sm-6">
+    <div class="card card-inverse" style="background-color: #333; border-color: #333; opacity: .8">
+      <div class="card-block">
+        <h3 class="card-title">Trainings</h3>
+        <p class="card-text">Checkout for NPI, Brownbag, TOI, WW-Trainings and Local Trainings</p>
+	<ul class="list-group list-group-flush">
+        {% for liob in kb %}
+		{% if liob.category == 'tr' %}
+			<li class="list-group-item justify-content-between" style="background-color:green"><a target="_blank" class='card-link text-uppercase h4' href='{% url 'goto' %}?page_id={{liob.id}}&page=kb'>{{liob.title}} <i class="fa fa-external-link"> </i></a><span> <i class="fa fa-eye">{{ liob.hits }}</i></span></li>
+		{% endif %} 
+	{% endfor %}
+	</ul>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+{% endif %}
+{% endblock%}

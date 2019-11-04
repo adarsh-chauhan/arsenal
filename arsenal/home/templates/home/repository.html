@@ -1,0 +1,94 @@
+{% extends 'home/frame.html' %}
+
+{% block content%}
+<table style="width:90%; top:5%; left:1%; margin:auto;position:relative;">
+<tr>
+
+<td>
+<div class="card card-inverse" style="width: 16rem; background-color: #333; border-color: #333; opacity: .8">
+  <div class="card-block">
+    <h4 class="card-title">CUCM</h4>
+      </div>
+<ul class="list-group list-group-flush"> 
+
+{% for i in rp %}
+{% if i.category == 'cucm' %}
+ <li class="list-group-item justify-content-between" style="background-color:green"><a target="_blank" href='goto?page_id={{ i.id }}&page=rp'>{{ i.name }}</a><span> <i class="fa fa-eye">{{ i.hits }}</i></span></li>
+{% endif %}
+{% endfor %}
+</ul>
+</div>
+</td>
+
+<td>
+<div class="card card-inverse" style="width: 16rem; background-color: #333; border-color: #333; opacity: .8">
+  <div class="card-block">
+    <h4 class="card-title">TRACE</h4>
+      </div>
+<ul class="list-group list-group-flush"> 
+
+{% for i in rp %}
+{% if i.category == 'trace' %}
+ <li class="list-group-item justify-content-between" style="background-color:green"><a target="_blank" href='goto?page_id={{ i.id }}&page=rp'>{{ i.name }}</a><span> <i class="fa fa-eye">{{ i.hits }}</i></span></li>
+{% endif %}
+{% endfor %}
+</ul>
+</div>
+</td>
+
+<td>
+<div class="card card-inverse" style="width: 16rem; background-color: #333; border-color: #333; opacity: .8">
+  <div class="card-block">
+    <h4 class="card-title">Collboration</h4>
+      </div>
+<ul class="list-group list-group-flush"> 
+
+{% for i in rp %}
+{% if i.category == 'collaboration' %}
+ <li class="list-group-item justify-content-between" style="background-color:green"><a target="_blank" href='goto?page_id={{ i.id }}&page=rp'>{{ i.name }}</a><span> <i class="fa fa-eye">{{ i.hits }}</i></span></li>
+{% endif %}
+{% endfor %}
+</ul>
+</div>
+</td>
+
+
+<td>
+<div class="card card-inverse" style="width: 16rem; background-color: #333; border-color: #333; opacity: .8">
+  <div class="card-block">
+    <h4 class="card-title">Softwares/Scripts</h4>
+      </div>
+<ul class="list-group list-group-flush"> 
+
+{% for i in rp %}
+{% if i.category == 'software' %}
+ <li class="list-group-item justify-content-between" style="background-color:green"><a target="_blank" href='goto?page_id={{ i.id }}&page=rp'>{{ i.name }}</a><span> <i class="fa fa-eye">{{ i.hits }}</i></span></li>
+{% endif %}
+{% endfor %}
+</ul>
+</div>
+</td>
+
+
+<td>
+<div class="card card-inverse" style="width: 16rem; background-color: #333; border-color: #333; opacity: .8">
+  <div class="card-block">
+    <h4 class="card-title">Day To Day</h4>
+      </div>
+<ul class="list-group list-group-flush"> 
+
+{% for i in rp %}
+{% if i.category == 'daytoday' %}
+ <li class="list-group-item justify-content-between" style="background-color:green"><a target="_blank" href='goto?page_id={{ i.id }}&page=rp'>{{ i.name }}</a><span> <i class="fa fa-eye">{{ i.hits }}</i></span></li>
+{% endif %}
+{% endfor %}
+</ul>
+</div>
+</td>
+
+
+
+
+</tr>
+</table>
+{% endblock  %}
